@@ -1,0 +1,524 @@
+{
+  "cartas": [
+    {
+      "id": "1",
+      "nome": "Montanha",
+      "imagem": "/IMGS/CARTAS/TERRENOS/VERMELHO/MONTANHATERRENOVERMELHO.jpg",
+      "cor": "Vermelho",
+      "tipo": "Terreno"
+    },
+    {
+      "id": "2",
+      "nome": "Destroy Evil",
+      "imagem": "/IMGS/CARTAS/BRANCAS/CARTADESTROYEVILBRANCA.jpg",
+      "cor": "Branco",
+      "tipo": "Feitiço"
+    },
+    {
+      "id": "3",
+      "nome": "Sheltered by Ghosts",
+      "imagem": "/IMGS/CARTAS/BRANCAS/SHELTEREDBYGHOSTSBRANCA.jpg",
+      "cor": "Branco",
+      "tipo": "Feitiço"
+    },
+    {
+      "id": "4",
+      "nome": "Brotherhood's End",
+      "imagem": "/IMGS/CARTAS/VERMELHAS/BROTHEHOODSENDVERMELHA.jpg",
+      "cor": "Vermelho",
+      "tipo": "Feitiço"
+    },
+    {
+      "id": "5",
+      "nome": "Nurturing Pixie",
+      "imagem": "/IMGS/CARTAS/BRANCAS/SILFIDEACALENTADORA.jpg",
+      "cor": "Branco",
+      "tipo": "Criatura"
+    },
+    {
+      "id": "6",
+      "nome": "Fear Of Isolation",
+      "imagem": "/IMGS/CARTAS/AZUIS/FEAROFISOLATION.jpg",
+      "cor": "Azul",
+      "tipo": "Criatura"
+    },
+    {
+      "id": "7",
+      "nome": "Preacher Of The Schism ",
+      "imagem": "/IMGS/CARTAS/PRETAS/PREACHEROFTHESCHISM.jpg",
+      "cor": "Preto",
+      "tipo": "criatura"
+    },
+    {
+      "id": "8",
+      "nome": "Overlord of the Balemurk",
+      "imagem": "/IMGS/CARTAS/PRETAS/OVERLORDOFTHEBALEMURK.jpg",
+      "cor": "Preto",
+      "tipo": "criatura"
+    },
+    {
+      "id": "9",
+      "nome": "Kaito",
+      "imagem": "/IMGS/CARTAS/AZUIS/KAITO.jpg",
+      "cor": "Azul Preto",
+      "tipo": "planeswalker"
+    },
+    {
+      "id": "10",
+      "nome": "Go For The Throat",
+      "imagem": "/IMGS/CARTAS/PRETAS/GOFORTHETHROAT.jpg",
+      "cor": "Preto",
+      "tipo": "instantâneo"
+    },
+    {
+      "id": "11",
+      "nome": "Destroy Evil",
+      "imagem": "/IMGS/CARTAS/BRANCAS/DESTROYEVIL.jpg",
+      "cor": "Branco",
+      "tipo": "instantâneo"
+    },
+    {
+      "id": "12",
+      "nome": "Stock Up",
+      "imagem": "/IMGS/CARTAS/AZUIS/STOCKUP.jpg",
+      "cor": "Azul",
+      "tipo": "feitiço"
+    },
+    {
+      "id": "13",
+      "nome": "This Town Aint Big Enough",
+      "imagem": "/IMGS/CARTAS/AZUIS/THISTOWNAINTBIGENOUGH.jpg",
+      "cor": "Azul",
+      "tipo": "instantânea"
+    },
+    {
+      "id": "14",
+      "nome": "hopeless nightmare",
+      "imagem": "/IMGS/CARTAS/PRETAS/HOPELESSNIGHTMARE.png",
+      "cor": "Preto",
+      "tipo": "Encantamento"
+    },
+    {
+      "id": "15",
+      "nome": "stormchasers talent",
+      "imagem": "/IMGS/CARTAS/AZUIS/STORMCHASERSTALENT.jpg",
+      "cor": "Azul",
+      "tipo": "encantamento"
+    },
+    {
+      "id": "16",
+      "nome": "MOmentum Breaker",
+      "imagem": "/IMGS/CARTAS/PRETAS/MOMENTUMBREAKER.jpg",
+      "cor": "Preto",
+      "tipo": "encantamento"
+    },
+    {
+      "id": "17",
+      "nome": "nowhere to run",
+      "imagem": "/IMGS/CARTAS/PRETAS/NOWHERETORUN.jpg",
+      "cor": "Preto",
+      "tipo": "encantamento"
+    },
+    {
+      "id": "18",
+      "nome": "restless anchorage",
+      "imagem": "/IMGS/CARTAS/TERRENOS/BRANCOAZUL/RESTLESS ANCHORAGE.jpg",
+      "cor": "Branco Azul",
+      "tipo": "Terreno"
+    }
+  ],
+  "colecao": [
+    {
+      "nome": "Destroy Evil",
+      "imagem": "/IMGS/CARTAS/BRANCAS/CARTADESTROYEVILBRANCA.jpg",
+      "cor": "Branco",
+      "tipo": "Feitiço",
+      "id": 1
+    },
+    {
+      "nome": "Sheltered by Ghosts",
+      "imagem": "/IMGS/CARTAS/BRANCAS/SHELTEREDBYGHOSTSBRANCA.jpg",
+      "cor": "Branco",
+      "tipo": "Feitiço",
+      "id": 2
+    },
+    {
+      "nome": "Brotherhood's End",
+      "imagem": "/IMGS/CARTAS/VERMELHAS/BROTHEHOODSENDVERMELHA.jpg",
+      "cor": "Vermelho",
+      "tipo": "Feitiço",
+      "id": 3
+    },
+    {
+      "nome": "Nurturing Pixie",
+      "imagem": "/IMGS/CARTAS/BRANCAS/SILFIDEACALENTADORA.jpg",
+      "cor": "Branco",
+      "tipo": "Criatura",
+      "id": 4
+    },
+    {
+      "nome": "Kaito",
+      "imagem": "/IMGS/CARTAS/AZUIS/KAITO.jpg",
+      "cor": "Azul Preto",
+      "tipo": "planeswalker",
+      "id": 5
+    },
+    {
+      "nome": "Go For The Throat",
+      "imagem": "/IMGS/CARTAS/PRETAS/GOFORTHETHROAT.jpg",
+      "cor": "Preto",
+      "tipo": "instantâneo",
+      "id": 6
+    },
+    {
+      "nome": "Overlord of the Balemurk",
+      "imagem": "/IMGS/CARTAS/PRETAS/OVERLORDOFTHEBALEMURK.jpg",
+      "cor": "Preto",
+      "tipo": "criatura",
+      "id": 7
+    },
+    {
+      "nome": "Fear Of Isolation",
+      "imagem": "/IMGS/CARTAS/AZUIS/FEAROFISOLATION.jpg",
+      "cor": "Azul",
+      "tipo": "Criatura",
+      "id": 8
+    },
+    {
+      "nome": "Preacher Of The Schism ",
+      "imagem": "/IMGS/CARTAS/PRETAS/PREACHEROFTHESCHISM.jpg",
+      "cor": "Preto",
+      "tipo": "criatura",
+      "id": 9
+    },
+    {
+      "nome": "hopeless nightmare",
+      "imagem": "/IMGS/CARTAS/PRETAS/HOPELESSNIGHTMARE.png",
+      "cor": "Preto",
+      "tipo": "Encantamento",
+      "id": 10
+    },
+    {
+      "nome": "This Town Aint Big Enough",
+      "imagem": "/IMGS/CARTAS/AZUIS/THISTOWNAINTBIGENOUGH.jpg",
+      "cor": "Azul",
+      "tipo": "instantânea",
+      "id": 11
+    },
+    {
+      "nome": "Stock Up",
+      "imagem": "/IMGS/CARTAS/AZUIS/STOCKUP.jpg",
+      "cor": "Azul",
+      "tipo": "feitiço",
+      "id": 12
+    },
+    {
+      "nome": "Destroy Evil",
+      "imagem": "/IMGS/CARTAS/BRANCAS/DESTROYEVIL.jpg",
+      "cor": "Branco",
+      "tipo": "instantâneo",
+      "id": 13
+    },
+    {
+      "nome": "stormchasers talent",
+      "imagem": "/IMGS/CARTAS/AZUIS/STORMCHASERSTALENT.jpg",
+      "cor": "Azul",
+      "tipo": "encantamento",
+      "id": 14
+    },
+    {
+      "nome": "nowhere to run",
+      "imagem": "/IMGS/CARTAS/PRETAS/NOWHERETORUN.jpg",
+      "cor": "Preto",
+      "tipo": "encantamento",
+      "id": 15
+    }
+  ],
+  "decks": [
+    {
+      "nome": "teste remover",
+      "imagem": "public/IMGS/CAPADEBARALHO/BRANCO.PNG",
+      "cartas": [
+        {
+          "id": "2",
+          "nome": "Destroy Evil",
+          "imagem": "/IMGS/CARTAS/BRANCAS/CARTADESTROYEVILBRANCA.jpg",
+          "cor": "Branco",
+          "tipo": "Feitiço",
+          "quantidade": 4
+        },
+        {
+          "id": "3",
+          "nome": "Sheltered by Ghosts",
+          "imagem": "/IMGS/CARTAS/BRANCAS/SHELTEREDBYGHOSTSBRANCA.jpg",
+          "cor": "Branco",
+          "tipo": "Feitiço",
+          "quantidade": 4
+        },
+        {
+          "id": "6",
+          "nome": "Fear Of Isolation",
+          "imagem": "/IMGS/CARTAS/AZUIS/FEAROFISOLATION.jpg",
+          "cor": "Azul",
+          "tipo": "Criatura",
+          "quantidade": 4
+        },
+        {
+          "id": "5",
+          "nome": "Nurturing Pixie",
+          "imagem": "/IMGS/CARTAS/BRANCAS/SILFIDEACALENTADORA.jpg",
+          "cor": "Branco",
+          "tipo": "Criatura",
+          "quantidade": 4
+        },
+        {
+          "id": "4",
+          "nome": "Brotherhood's End",
+          "imagem": "/IMGS/CARTAS/VERMELHAS/BROTHEHOODSENDVERMELHA.jpg",
+          "cor": "Vermelho",
+          "tipo": "Feitiço",
+          "quantidade": 4
+        },
+        {
+          "id": "7",
+          "nome": "Preacher Of The Schism ",
+          "imagem": "/IMGS/CARTAS/PRETAS/PREACHEROFTHESCHISM.jpg",
+          "cor": "Preto",
+          "tipo": "criatura",
+          "quantidade": 4
+        },
+        {
+          "id": "8",
+          "nome": "Overlord of the Balemurk",
+          "imagem": "/IMGS/CARTAS/PRETAS/OVERLORDOFTHEBALEMURK.jpg",
+          "cor": "Preto",
+          "tipo": "criatura",
+          "quantidade": 4
+        },
+        {
+          "id": "9",
+          "nome": "Kaito",
+          "imagem": "/IMGS/CARTAS/AZUIS/KAITO.jpg",
+          "cor": "Azul Preto",
+          "tipo": "planeswalker",
+          "quantidade": 4
+        },
+        {
+          "id": "12",
+          "nome": "Stock Up",
+          "imagem": "/IMGS/CARTAS/AZUIS/STOCKUP.jpg",
+          "cor": "Azul",
+          "tipo": "feitiço",
+          "quantidade": 4
+        },
+        {
+          "id": "10",
+          "nome": "Go For The Throat",
+          "imagem": "/IMGS/CARTAS/PRETAS/GOFORTHETHROAT.jpg",
+          "cor": "Preto",
+          "tipo": "instantâneo",
+          "quantidade": 4
+        },
+        {
+          "id": "14",
+          "nome": "hopeless nightmare",
+          "imagem": "/IMGS/CARTAS/PRETAS/HOPELESSNIGHTMARE.png",
+          "cor": "Preto",
+          "tipo": "Encantamento",
+          "quantidade": 4
+        },
+        {
+          "id": "15",
+          "nome": "stormchasers talent",
+          "imagem": "/IMGS/CARTAS/AZUIS/STORMCHASERSTALENT.jpg",
+          "cor": "Azul",
+          "tipo": "encantamento",
+          "quantidade": 4
+        },
+        {
+          "id": "13",
+          "nome": "This Town Aint Big Enough",
+          "imagem": "/IMGS/CARTAS/AZUIS/THISTOWNAINTBIGENOUGH.jpg",
+          "cor": "Azul",
+          "tipo": "instantânea",
+          "quantidade": 4
+        },
+        {
+          "id": "16",
+          "nome": "MOmentum Breaker",
+          "imagem": "/IMGS/CARTAS/PRETAS/MOMENTUMBREAKER.jpg",
+          "cor": "Preto",
+          "tipo": "encantamento",
+          "quantidade": 4
+        },
+        {
+          "id": "17",
+          "nome": "nowhere to run",
+          "imagem": "/IMGS/CARTAS/PRETAS/NOWHERETORUN.jpg",
+          "cor": "Preto",
+          "tipo": "encantamento",
+          "quantidade": 4
+        }
+      ],
+      "criadoEm": "2025-05-20T18:55:00.530Z",
+      "id": 1
+    }
+  ],
+  "novidades": [
+    {
+      "nome": "Aetherdrift",
+      "imagem": "/IMGS/COLECOESNOVAS/COLECOESNOVAS1.webp",
+      "id": "3c2d",
+      "link": "https://magic.wizards.com/pt-BR/products/aetherdrift"
+    },
+    {
+      "nome": "Duskmourn",
+      "imagem": "/IMGS/COLECOESNOVAS/COLECOESNOVAS2.webp",
+      "id": "f6d1",
+      "link": "https://magic.wizards.com/pt-BR/products/duskmourn-house-of-horror"
+    },
+    {
+      "nome": "Bloomburrow",
+      "imagem": "/IMGS/COLECOESNOVAS/COLECOESNOVAS3.webp",
+      "id": "62f8",
+      "link": "https://magic.wizards.com/pt-BR/products/bloomburrow"
+    },
+    {
+      "nome": "Assassin's Creed",
+      "imagem": "/IMGS/COLECOESNOVAS/COLECOESNOVAS4.webp",
+      "id": "9cf9",
+      "link": "https://magic.wizards.com/pt-BR/products/assassins-creed"
+    }
+  ],
+  "decksNovos": [
+    {
+      "id": 1747767258398,
+      "nome": "teste remover",
+      "imagem": "public/IMGS/CAPADEBARALHO/BRANCO.PNG",
+      "cartas": [
+        {
+          "id": "2",
+          "nome": "Destroy Evil",
+          "imagem": "/IMGS/CARTAS/BRANCAS/CARTADESTROYEVILBRANCA.jpg",
+          "cor": "Branco",
+          "tipo": "Feitiço",
+          "quantidade": 4
+        },
+        {
+          "id": "3",
+          "nome": "Sheltered by Ghosts",
+          "imagem": "/IMGS/CARTAS/BRANCAS/SHELTEREDBYGHOSTSBRANCA.jpg",
+          "cor": "Branco",
+          "tipo": "Feitiço",
+          "quantidade": 4
+        },
+        {
+          "id": "6",
+          "nome": "Fear Of Isolation",
+          "imagem": "/IMGS/CARTAS/AZUIS/FEAROFISOLATION.jpg",
+          "cor": "Azul",
+          "tipo": "Criatura",
+          "quantidade": 4
+        },
+        {
+          "id": "5",
+          "nome": "Nurturing Pixie",
+          "imagem": "/IMGS/CARTAS/BRANCAS/SILFIDEACALENTADORA.jpg",
+          "cor": "Branco",
+          "tipo": "Criatura",
+          "quantidade": 4
+        },
+        {
+          "id": "4",
+          "nome": "Brotherhood's End",
+          "imagem": "/IMGS/CARTAS/VERMELHAS/BROTHEHOODSENDVERMELHA.jpg",
+          "cor": "Vermelho",
+          "tipo": "Feitiço",
+          "quantidade": 4
+        },
+        {
+          "id": "7",
+          "nome": "Preacher Of The Schism ",
+          "imagem": "/IMGS/CARTAS/PRETAS/PREACHEROFTHESCHISM.jpg",
+          "cor": "Preto",
+          "tipo": "criatura",
+          "quantidade": 4
+        },
+        {
+          "id": "8",
+          "nome": "Overlord of the Balemurk",
+          "imagem": "/IMGS/CARTAS/PRETAS/OVERLORDOFTHEBALEMURK.jpg",
+          "cor": "Preto",
+          "tipo": "criatura",
+          "quantidade": 4
+        },
+        {
+          "id": "9",
+          "nome": "Kaito",
+          "imagem": "/IMGS/CARTAS/AZUIS/KAITO.jpg",
+          "cor": "Azul Preto",
+          "tipo": "planeswalker",
+          "quantidade": 4
+        },
+        {
+          "id": "12",
+          "nome": "Stock Up",
+          "imagem": "/IMGS/CARTAS/AZUIS/STOCKUP.jpg",
+          "cor": "Azul",
+          "tipo": "feitiço",
+          "quantidade": 4
+        },
+        {
+          "id": "10",
+          "nome": "Go For The Throat",
+          "imagem": "/IMGS/CARTAS/PRETAS/GOFORTHETHROAT.jpg",
+          "cor": "Preto",
+          "tipo": "instantâneo",
+          "quantidade": 4
+        },
+        {
+          "id": "14",
+          "nome": "hopeless nightmare",
+          "imagem": "/IMGS/CARTAS/PRETAS/HOPELESSNIGHTMARE.png",
+          "cor": "Preto",
+          "tipo": "Encantamento",
+          "quantidade": 4
+        },
+        {
+          "id": "15",
+          "nome": "stormchasers talent",
+          "imagem": "/IMGS/CARTAS/AZUIS/STORMCHASERSTALENT.jpg",
+          "cor": "Azul",
+          "tipo": "encantamento",
+          "quantidade": 4
+        },
+        {
+          "id": "13",
+          "nome": "This Town Aint Big Enough",
+          "imagem": "/IMGS/CARTAS/AZUIS/THISTOWNAINTBIGENOUGH.jpg",
+          "cor": "Azul",
+          "tipo": "instantânea",
+          "quantidade": 4
+        },
+        {
+          "id": "16",
+          "nome": "MOmentum Breaker",
+          "imagem": "/IMGS/CARTAS/PRETAS/MOMENTUMBREAKER.jpg",
+          "cor": "Preto",
+          "tipo": "encantamento",
+          "quantidade": 4
+        },
+        {
+          "id": "17",
+          "nome": "nowhere to run",
+          "imagem": "/IMGS/CARTAS/PRETAS/NOWHERETORUN.jpg",
+          "cor": "Preto",
+          "tipo": "encantamento",
+          "quantidade": 4
+        }
+      ],
+      "publicadoEm": "2025-05-20T18:54:29.666Z",
+      "avaliacao": 1
+    }
+  ]
+}
