@@ -4,6 +4,10 @@ const mongoose = require('mongoose');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors');
+app.use(cors({
+  origin: 'http://localhost:5173',
+}));
 
 const routes = require('./routes');
 app.use('/api', routes);

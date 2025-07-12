@@ -5,21 +5,12 @@ const Carta = require('../models/Carta');
 router.get('/', async (req, res) => {
   try {
     const cartas = await Carta.find();
-    res.json(cartas);
+    res.status(200).json(cartas); 
   } catch (err) {
-    res.status(500).json({ error: 'Erro ao buscar cartas' });
+    res.status(500).json({ error: 'Erro ao buscar cartas', message: err.message });
   }
 });
 
-router.get('/:id', async (req, res) => {
-  try {
-    const carta = await Carta.findById(req.params.id);
-    if (!carta) return res.status(404).json({ error: 'Carta não encontrada' });
-    res.json(carta);
-  } catch (err) {
-    res.status(500).json({ error: 'Erro ao buscar carta' });
-  }
-});
 
 router.post('/', async (req, res) => {
   try {
