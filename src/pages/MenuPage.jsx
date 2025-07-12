@@ -7,13 +7,13 @@ const MenuPage = ({ setDeckSelecionado, setCurrentPage }) => {
 
   useEffect(() => {
     
-    fetch('http://localhost:3001/novidades')
+    fetch('http://localhost:3001/api/novidades')
       .then((res) => res.json())
       .then(setNovidades)
       .catch((err) => console.error('Erro ao carregar novidades:', err));
 
     
-    fetch('http://localhost:3001/decksNovos')
+    fetch('http://localhost:3001/api/decksNovos')
       .then((res) => res.json())
       .then((decks) => {
         const agora = new Date();

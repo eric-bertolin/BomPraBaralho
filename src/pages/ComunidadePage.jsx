@@ -5,7 +5,7 @@ const ComunidadePage = ({ setCurrentPage, setDeckSelecionado }) => {
   const [melhores, setMelhores] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/decksNovos')
+    fetch('http://localhost:3001/api/decksNovos')
       .then((res) => res.json())
       .then((todos) => {
         const agora = new Date();

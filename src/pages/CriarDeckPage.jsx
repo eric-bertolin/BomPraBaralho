@@ -12,7 +12,7 @@ function CriarDeckPage() {
   const [nomeDeck, setNomeDeck] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:3001/cartas')
+    fetch('http://localhost:3001/api/cartas')
       .then(res => res.json())
       .then(data => setColecao(data))
       .catch(err => console.error('Erro ao buscar coleção:', err));
@@ -75,7 +75,7 @@ function CriarDeckPage() {
       criadoEm: new Date().toISOString(),
     };
 
-    fetch('http://localhost:3001/decks', {
+    fetch('http://localhost:3001/api/decks', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(novoDeck),

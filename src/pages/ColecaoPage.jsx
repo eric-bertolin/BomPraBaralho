@@ -6,14 +6,14 @@ function ColecaoPage({ setCurrentPage }) {
   const [colecao, setColecao] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/colecao')
+    fetch('http://localhost:3001/api/colecao')
       .then((res) => res.json())
       .then(setColecao)
       .catch((err) => console.error('Erro ao carregar coleção:', err));
   }, []);
 
   const removerCarta = (id) => {
-    fetch(`http://localhost:3001/colecao/${id}`, {
+    fetch(`http://localhost:3001/api/colecao/${id}`, {
       method: 'DELETE'
     })
       .then(() => {

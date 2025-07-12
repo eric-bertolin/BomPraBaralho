@@ -8,7 +8,7 @@ function VisualizarDeckPage({ deck, setCurrentPage, setDeckSelecionado }) {
     if (!deck) return;
 
     
-    fetch('http://localhost:3001/decks')
+    fetch('http://localhost:3001/api/decks')
       .then((res) => res.json())
       .then((decks) => {
         const jaSalvo = decks.some((d) => d.nome === deck.nome);
@@ -28,7 +28,7 @@ function VisualizarDeckPage({ deck, setCurrentPage, setDeckSelecionado }) {
       criadoEm: new Date().toISOString()
     };
     try {
-      await fetch('http://localhost:3001/decks', {
+      await fetch('http://localhost:3001/api/decks', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(novoDeck)
@@ -51,7 +51,7 @@ const handleVoto = async (tipo) => {
   const ajuste = voto === null ? 1 : 2; 
   const novaAvaliacao = (deck.avaliacao || 0) + (isLike ? ajuste : -ajuste);
 
-  await fetch(`http://localhost:3001/decksNovos/${deck.id}`, {
+  await fetch(`http://localhost:3001/api/decksNovos/${deck.id}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ avaliacao: novaAvaliacao })

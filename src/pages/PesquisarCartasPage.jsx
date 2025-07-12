@@ -7,7 +7,7 @@ function PesquisarCartasPage() {
   const [busca, setBusca] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:3001/cartas')
+    fetch('http://localhost:3001/api/cartas')
       .then((res) => res.json())
       .then(setCartas)
       .catch((err) => console.error('Erro ao buscar cartas:', err));
@@ -17,7 +17,7 @@ function PesquisarCartasPage() {
     const novaCarta = { ...carta };
     delete novaCarta.id;
 
-    fetch('http://localhost:3001/colecao', {
+    fetch('http://localhost:3001/api/colecao', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(novaCarta),

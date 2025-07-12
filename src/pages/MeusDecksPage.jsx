@@ -4,7 +4,7 @@ const MeusDecksPage =({ setCurrentPage, setDeckSelecionado }) => {
   const [decks, setDecks] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/decks')
+    fetch('http://localhost:3001/api/decks')
       .then((res) => res.json())
       .then((data) => setDecks(data))
       .catch((err) => console.error('Erro ao buscar decks:', err));
@@ -14,7 +14,7 @@ const MeusDecksPage =({ setCurrentPage, setDeckSelecionado }) => {
     if (!confirmar) return;
 
     try {
-      await fetch(`http://localhost:3001/decks/${id}`, {
+      await fetch(`http://localhost:3001/api/decks/${id}`, {
         method: 'DELETE'
       });
 
@@ -26,7 +26,7 @@ const MeusDecksPage =({ setCurrentPage, setDeckSelecionado }) => {
   };
  const publicarDeck = async (deck) => {
   try {
-    const publicadosRes = await fetch('http://localhost:3001/decksNovos');
+    const publicadosRes = await fetch('http://localhost:3001/api/decksNovos');
     const publicados = await publicadosRes.json();
 
     const jaPublicado = publicados.some((d) => d.id === deck.id);
@@ -58,7 +58,7 @@ const MeusDecksPage =({ setCurrentPage, setDeckSelecionado }) => {
       avaliacao: 0
     };
 
-    await fetch('http://localhost:3001/decksNovos', {
+    await fetch('http://localhost:3001/api/decksNovos', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(novoDeck),
