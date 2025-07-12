@@ -7,24 +7,36 @@ function PesquisarCartasPage() {
   const [busca, setBusca] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/cartas')
-      .then((res) => res.json())
-      .then(setCartas)
-      .catch((err) => console.error('Erro ao buscar cartas:', err));
-  }, []);
-
-  const adicionarAColecao = (carta) => {
-    const novaCarta = { ...carta };
-    delete novaCarta.id;
-
-    fetch('http://localhost:3001/api/colecao', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(novaCarta),
+  fetch('http://localhost:3001/api/cartas')
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('Resposta inválida da API');
+      }
+      return res.json();
     })
-      .then(() => alert('Carta adicionada à coleção!'))
-      .catch((err) => console.error('Erro ao adicionar carta:', err));
-  };
+    .then(setCartas)
+    .catch((err) => console.error('Erro ao buscar cartas:', err));
+}, []);
+
+  function adicionarAColecao(carta) {
+  fetch('http://localhost:3001/api/colecao', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      nome: carta.nome,
+      imagem: carta.imagem,
+      cor: carta.cor,
+      tipo: carta.tipo
+    })
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error('Erro ao adicionar');
+      return res.json();
+    })
+    .then(() => alert('Carta adicionada à coleção!'))
+    .catch((err) => console.error('❌ Erro ao adicionar:', err));
+}
+
 
   const cartasFiltradas = cartas.filter((carta) =>
     carta.nome.toLowerCase().includes(busca.toLowerCase())

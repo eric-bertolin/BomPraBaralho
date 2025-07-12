@@ -8,3 +8,4 @@ const colecaoSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 module.exports = mongoose.model('Colecao', colecaoSchema);
+
