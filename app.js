@@ -1,3 +1,4 @@
+
 var express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -23,7 +24,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+const authRoutes = require('./routes/auth');
 const routes = require('./routes');
+app.use('/auth', authRoutes);
 app.use('/api', routes);
 
 app.use(express.static(path.join(__dirname, 'dist')));

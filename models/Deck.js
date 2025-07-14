@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const deckSchema = new mongoose.Schema({
+  userEmail: { type: String, required: true },
   nome: { type: String, required: true },
   criadoEm: { type: Date, default: Date.now },
   cartas: {

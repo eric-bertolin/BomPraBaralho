@@ -1,19 +1,23 @@
 const express = require('express');
 const router = express.Router();
 const Colecao = require('../models/colecao');
+const authenticateJWT = require('../middlewares/authMiddleware');
 
-router.get('/', async (req, res) => {
+router.get('/', authenticateJWT, async (req, res) => {
   try {
-    const colecao = await Colecao.find();
+    const colecao = await Colecao.find({ userEmail: req.user.email });
     res.json(colecao);
   } catch (err) {
     res.status(500).json({ error: 'Erro ao buscar coleção' });
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', authenticateJWT, async (req, res) => {
   try {
-    const novaCarta = new Colecao(req.body);
+    const novaCarta = new Colecao({
+      ...req.body,
+      userEmail: req.user.email
+    });
     await novaCarta.save();
     res.status(201).json(novaCarta);
   } catch (err) {
@@ -22,12 +26,15 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authenticateJWT, async (req, res) => {
   try {
-    const cartaRemovida = await Colecao.findByIdAndDelete(req.params.id);
+    const cartaRemovida = await Colecao.findOneAndDelete({
+      _id: req.params.id,
+      userEmail: req.user.email
+    });
 
     if (!cartaRemovida) {
-      return res.status(404).json({ error: 'Carta não encontrada' });
+      return res.status(404).json({ error: 'Carta não encontrada ou sem permissão' });
     }
 
     res.json({ message: 'Carta removida da coleção com sucesso' });

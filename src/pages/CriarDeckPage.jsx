@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo, useEffect } from 'react';
 
 const CORES = ['Branco', 'Azul', 'Preto', 'Vermelho', 'Verde'];
@@ -69,7 +70,7 @@ function CriarDeckPage() {
   const salvarDeck = () => {
     if (!nomeDeck || totalCartas < 60) return;
     const novoDeck = {
-      id: Date.now(), // ID simples com timestamp
+      id: Date.now(),
       nome: nomeDeck,
       cartas: deck,
       criadoEm: new Date().toISOString(),
@@ -77,7 +78,10 @@ function CriarDeckPage() {
 
     fetch('http://localhost:3001/api/decks', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      },
       body: JSON.stringify(novoDeck),
     })
       .then(() => {

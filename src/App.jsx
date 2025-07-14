@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import ProfilePopup from './components/ProfilePopup';
 import AddPopup from './components/AddPopup';
+import LoginPopup from './components/LoginPopup';
+import RegisterPopup from './components/RegisterPopup';
 
 import MenuPage from './pages/MenuPage';
 import ColecaoPage from './pages/ColecaoPage';
@@ -19,29 +22,39 @@ function App() {
   const [showAdd, setShowAdd] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [deckSelecionado, setDeckSelecionado] = useState(null);
-  
+
+  const [showLogin, setShowLogin] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    setIsAuthenticated(!!token);
+  }, []);
+
+  const handleLoginSuccess = () => {
+    setIsAuthenticated(true);
+    setShowLogin(false);
+  };
+
   const renderPage = () => {
-  switch (currentPage) {
-    case 'menu': return <MenuPage setCurrentPage={setCurrentPage} setDeckSelecionado={setDeckSelecionado}/>;
-    case 'colecao': return <ColecaoPage setCurrentPage={setCurrentPage} />;
-    case 'meus-decks': return (<MeusDecksPage setCurrentPage={setCurrentPage} setDeckSelecionado={setDeckSelecionado}/>);
-    case 'comunidade': return (<ComunidadePage setCurrentPage={setCurrentPage} setDeckSelecionado={setDeckSelecionado}/>);
-    case 'pesquisar': return <PesquisarCartasPage />;
-    case 'criar-deck': return <CriarDeckPage />;
-    case 'visualizar-deck': return (<VisualizarDeckPage deck={deckSelecionado} setCurrentPage={setCurrentPage} setDeckSelecionado={setDeckSelecionado}/>);
-    default: return <MenuPage setCurrentPage={setCurrentPage} />;
-  }
-};
+    switch (currentPage) {
+      case 'menu': return <MenuPage setCurrentPage={setCurrentPage} setDeckSelecionado={setDeckSelecionado} />;
+      case 'colecao': return <ColecaoPage setCurrentPage={setCurrentPage} />;
+      case 'meus-decks': return <MeusDecksPage setCurrentPage={setCurrentPage} setDeckSelecionado={setDeckSelecionado} />;
+      case 'comunidade': return <ComunidadePage setCurrentPage={setCurrentPage} setDeckSelecionado={setDeckSelecionado} />;
+      case 'pesquisar': return <PesquisarCartasPage />;
+      case 'criar-deck': return <CriarDeckPage />;
+      case 'visualizar-deck': return <VisualizarDeckPage deck={deckSelecionado} setCurrentPage={setCurrentPage} setDeckSelecionado={setDeckSelecionado} />;
+      default: return <MenuPage setCurrentPage={setCurrentPage} />;
+    }
+  };
 
   return (
     <div className="App">
       <Header />
-      <Sidebar
-        show={showSidebar}
-        setShow={setShowSidebar}
-        setCurrentPage={setCurrentPage}
-      />
-      <ProfilePopup show={showProfile} setShow={setShowProfile} />
+      <Sidebar show={showSidebar} setShow={setShowSidebar} setCurrentPage={setCurrentPage} />
+      <ProfilePopup show={showProfile} setShow={setShowProfile} setShowLogin={setShowLogin} />
       <AddPopup show={showAdd} setShow={setShowAdd} setCurrentPage={setCurrentPage} />
 
       <button id="prof-btn" className="btn btn-dark position-fixed top-0 end-0 m-3 rounded-circle" onClick={() => setShowProfile(true)}>
@@ -60,6 +73,29 @@ function App() {
         <button id="addbtn" className="btn btn-dark position-fixed bottom-0 end-0 m-4 rounded-circle" onClick={() => setCurrentPage('criar-deck')}>
           ➕
         </button>
+      )}
+
+      {showLogin && (
+        <LoginPopup
+          show={showLogin}
+          setShow={setShowLogin}
+          onLoginSuccess={handleLoginSuccess}
+          onShowRegister={() => {
+            setShowLogin(false);
+            setShowRegister(true);
+          }}
+        />
+      )}
+
+      {showRegister && (
+        <RegisterPopup
+          show={showRegister}
+          setShow={setShowRegister}
+          onShowLogin={() => {
+            setShowRegister(false);
+            setShowLogin(true);
+          }}
+        />
       )}
     </div>
   );
