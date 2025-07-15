@@ -7,33 +7,72 @@ function VisualizarDeckPage({ deck, setCurrentPage, setDeckSelecionado }) {
   useEffect(() => {
     if (!deck) return;
 
-    
+    // Recupera email do usuário do token
+    const token = localStorage.getItem('token');
+    let userEmail = '';
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      userEmail = payload.email;
+    } catch {}
+
     fetch('http://localhost:3001/api/decks')
       .then((res) => res.json())
       .then((decks) => {
-        const jaSalvo = decks.some((d) => d.nome === deck.nome);
+        // Garante que decks é um array antes de usar .some
+        let listaDecks = Array.isArray(decks) ? decks : (decks.decks ? decks.decks : []);
+        const jaSalvo = listaDecks.some((d) => d.nome === deck.nome && d.userEmail === userEmail);
         setSalvo(jaSalvo);
       });
 
-  
-    const votos = JSON.parse(localStorage.getItem('votos') || '{}');
-    setVotoAtual(votos[deck.id] || null);
+
+    // Busca voto do usuário no deck favorito
+    fetch('http://localhost:3001/api/decksFavoritos')
+      .then((res) => res.json())
+      .then((favoritos) => {
+        const existente = favoritos.find(d => d.nome === deck.nome);
+        if (existente && existente.votos) {
+          const votoUser = existente.votos.find(v => v.email === userEmail);
+          setVoto(votoUser ? votoUser.voto : null);
+        } else {
+          setVoto(null);
+        }
+      });
   }, [deck]);
 
   const salvarDeck = async () => {
-    const novoDeck = {
-      nome: deck.nome,
-      imagem: deck.imagem || '/IMGS/placeholder.jpg',
-      cartas: deck.cartas,
-      criadoEm: new Date().toISOString()
-    };
+    const token = localStorage.getItem('token');
+    let userEmail = '';
     try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      userEmail = payload.email;
+    } catch {}
+
+    // Verifica se já existe deck salvo
+    try {
+      const res = await fetch('http://localhost:3001/api/decks');
+      const decks = await res.json();
+      let listaDecks = Array.isArray(decks) ? decks : (decks.decks ? decks.decks : []);
+      const jaSalvo = listaDecks.some((d) => d.nome === deck.nome && d.userEmail === userEmail);
+      if (jaSalvo) {
+        alert('Este deck já está salvo nos seus decks!');
+        setSalvo(true);
+        return;
+      }
+      const novoDeck = {
+        nome: deck.nome,
+        imagem: deck.imagem || '/IMGS/placeholder.jpg',
+        cartas: deck.cartas,
+        criadoEm: new Date().toISOString(),
+        userEmail
+      };
       await fetch('http://localhost:3001/api/decks', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        },
         body: JSON.stringify(novoDeck)
       });
-
       setSalvo(true);
       alert('Deck salvo com sucesso!');
     } catch (err) {
@@ -46,19 +85,57 @@ const [voto, setVoto] = useState(null);
 
 const handleVoto = async (tipo) => {
   if (voto === tipo) return;
+  // Recupera email do usuário do token
+  const token = localStorage.getItem('token');
+  let userEmail = '';
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    userEmail = payload.email;
+  } catch {}
 
-  const isLike = tipo === 'like';
-  const ajuste = voto === null ? 1 : 2; 
-  const novaAvaliacao = (deck.avaliacao || 0) + (isLike ? ajuste : -ajuste);
-
-  await fetch(`http://localhost:3001/api/decksNovos/${deck.id}`, {
-    method: 'PATCH',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ avaliacao: novaAvaliacao })
-  });
-
-  setVoto(tipo);
-  setDeckSelecionado({ ...deck, avaliacao: novaAvaliacao });
+  try {
+    // Busca pelo nome para garantir que existe
+    const resBusca = await fetch('http://localhost:3001/api/decksFavoritos');
+    const favoritos = await resBusca.json();
+    const existente = favoritos.find(d => d.nome === deck.nome);
+    let favoritoId = existente ? existente._id : null;
+    let res;
+    if (favoritoId) {
+      // Atualiza deck favorito existente (PUT) - envia apenas email e voto
+      res = await fetch(`http://localhost:3001/api/decksFavoritos/${favoritoId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: userEmail, voto: tipo })
+      });
+    } else {
+      // Cria novo deck favorito (POST)
+      res = await fetch('http://localhost:3001/api/decksFavoritos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nome: deck.nome,
+          cor: deck.cor,
+          imagem: deck.imagem,
+          cartas: deck.cartas,
+          publicadoEm: deck.publicadoEm,
+          votos: [{ email: userEmail, voto: tipo }],
+          likes: tipo === 'like' ? 1 : 0,
+          dislikes: tipo === 'dislike' ? 1 : 0,
+          saldo: tipo === 'like' ? 1 : tipo === 'dislike' ? -1 : 0
+        })
+      });
+    }
+    if (res.ok) {
+      setVoto(tipo);
+      setDeckSelecionado({ ...deck });
+      alert('Avaliação registrada!');
+    } else {
+      alert('Erro ao registrar avaliação.');
+    }
+  } catch (err) {
+    alert('Erro ao registrar avaliação. Veja o console.');
+    console.error(err);
+  }
 };
   if (!deck) {
     return (

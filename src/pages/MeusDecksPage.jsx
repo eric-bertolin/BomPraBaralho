@@ -4,14 +4,12 @@ const MeusDecksPage = ({ setCurrentPage, setDeckSelecionado }) => {
   const [decks, setDecks] = useState([]);
   const [acessoNegado, setAcessoNegado] = useState(false);
 
-  useEffect(() => {
+  const fetchDecks = () => {
     const token = localStorage.getItem('token');
-
     if (!token) {
       setAcessoNegado(true);
       return;
     }
-
     fetch('http://localhost:3001/api/decks', {
       headers: {
         'Authorization': 'Bearer ' + token
@@ -31,6 +29,10 @@ const MeusDecksPage = ({ setCurrentPage, setDeckSelecionado }) => {
         console.error('Erro ao buscar decks:', err);
         setDecks([]);
       });
+  };
+
+  useEffect(() => {
+    fetchDecks();
   }, []);
 
   if (acessoNegado) {
@@ -55,8 +57,7 @@ const MeusDecksPage = ({ setCurrentPage, setDeckSelecionado }) => {
           'Authorization': 'Bearer ' + localStorage.getItem('token')
         }
       });
-
-      setDecks((prev) => prev.filter((deck) => deck.id !== id));
+      fetchDecks(); // Atualiza a lista após remover
     } catch (err) {
       console.error('Erro ao remover deck:', err);
       alert('Erro ao remover. Veja o console.');
@@ -68,7 +69,7 @@ const MeusDecksPage = ({ setCurrentPage, setDeckSelecionado }) => {
       const publicadosRes = await fetch('http://localhost:3001/api/decksNovos');
       const publicados = await publicadosRes.json();
 
-      const jaPublicado = publicados.some((d) => d.id === deck.id);
+      const jaPublicado = publicados.some((d) => d._id === deck._id);
       if (jaPublicado) {
         alert('Esse deck já foi publicado.');
         return;
@@ -86,9 +87,10 @@ const MeusDecksPage = ({ setCurrentPage, setDeckSelecionado }) => {
       }
 
       const novoDeck = {
-        id: deck.id,
+        _id: deck._id,
         nome: deck.nome,
         imagem,
+        cor: cartasArray[0]?.cor || "Branco",
         cartas: cartasArray,
         publicadoEm: new Date().toISOString(),
         avaliacao: 0
@@ -128,7 +130,7 @@ const MeusDecksPage = ({ setCurrentPage, setDeckSelecionado }) => {
         <div className="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
           {decks.map((deck) => (
             <div
-              key={deck.id}
+              key={deck._id}
               className="card shadow-sm"
               style={{ cursor: 'pointer' }}
             >
@@ -146,15 +148,17 @@ const MeusDecksPage = ({ setCurrentPage, setDeckSelecionado }) => {
                 <p className="text-muted" style={{ fontSize: '0.9rem' }}>
                   Criado em: {new Date(deck.criadoEm).toLocaleDateString()}
                 </p>
-                <button
-                  className="btn btn-sm btn-outline-danger mt-2"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    removerDeck(deck.id);
-                  }}
-                >
-                  Remover
-                </button>
+                {deck._id && (
+                  <button
+                    className="btn btn-sm btn-outline-danger mt-2"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      removerDeck(deck._id);
+                    }}
+                  >
+                    Remover
+                  </button>
+                )}
                 <button
                   className="btn btn-sm mt-2"
                   onClick={() => publicarDeck(deck)}

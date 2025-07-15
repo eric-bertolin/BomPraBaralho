@@ -2,17 +2,40 @@ import React, { useState } from 'react';
 
 function Carta({ id, imagem, nome, cor, tipo, onAdd, onRemove }) {
   const [showZoom, setShowZoom] = useState(false);
+  const [mongoId, setMongoId] = useState(null); // ✅ Guardar _id retornado do MongoDB
 
-  const handleAdicionar = () => {
-    if (onAdd) {
-      onAdd({ id, imagem, nome, cor, tipo });
+  const handleAdicionar = async () => {
+    try {
+      const res = await fetch('http://localhost:3001/api/colecao', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+        body: JSON.stringify({ nome, imagem, cor, tipo })
+      });
+
+      if (!res.ok) throw new Error('Erro ao adicionar carta');
+
+      const data = await res.json();
+      setMongoId(data._id);
+
+      alert(`Carta adicionada! ID Mongo: ${data._id}`);
+
+      // Chama função para atualizar coleção após adicionar
+      if (typeof onAdicionada === 'function') {
+        onAdicionada();
+      }
+    } catch (err) {
+      console.error('Erro ao adicionar carta:', err);
     }
+
     setShowZoom(false);
   };
 
   const handleRemover = () => {
     if (onRemove) {
-      onRemove(id);
+      onRemove(id); // sempre usa o id recebido via props
     }
     setShowZoom(false);
   };
@@ -20,19 +43,19 @@ function Carta({ id, imagem, nome, cor, tipo, onAdd, onRemove }) {
   return (
     <div>
       <img
-            src={imagem}
-            alt={nome}
-            onClick={() => setShowZoom(true)}
-            style={{
-            height: '300px',
-            width: 'auto',
-            maxWidth: '100%',
-            objectFit: 'contain',
-            display: 'block',
-            margin: '0 auto',
-            cursor: 'pointer'
-  }}
-/>
+        src={imagem}
+        alt={nome}
+        onClick={() => setShowZoom(true)}
+        style={{
+          height: '300px',
+          width: 'auto',
+          maxWidth: '100%',
+          objectFit: 'contain',
+          display: 'block',
+          margin: '0 auto',
+          cursor: 'pointer'
+        }}
+      />
 
       {showZoom && (
         <div
@@ -85,7 +108,7 @@ function Carta({ id, imagem, nome, cor, tipo, onAdd, onRemove }) {
                 Adicionar à Coleção
               </button>
             )}
-            {onRemove && (
+            {onRemove && id && (
               <button className="btn btn-danger mt-4" onClick={handleRemover}>
                 Remover da Coleção
               </button>

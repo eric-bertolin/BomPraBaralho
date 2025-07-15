@@ -3,6 +3,7 @@ const router = express.Router();
 const Deck = require('../models/Deck');
 const authenticateJWT = require('../middlewares/authMiddleware');
 
+
 router.get('/', authenticateJWT, async (req, res) => {
   try {
     const decks = await Deck.find({ userEmail: req.user.email });
@@ -23,16 +24,25 @@ router.get('/:id', authenticateJWT, async (req, res) => {
 });
 
 router.post('/', authenticateJWT, async (req, res) => {
-  try {
-    const novoDeck = new Deck({
-      ...req.body,
-      userEmail: req.user.email
-    });
-    await novoDeck.save();
-    res.status(201).json(novoDeck);
-  } catch (err) {
-    res.status(400).json({ error: 'Erro ao criar deck' });
+  const { nome, cartas } = req.body;
+  // Verifica se já existe deck salvo com mesmo nome e userEmail
+  const jaExiste = await Deck.findOne({ nome, userEmail: req.user.email });
+  if (jaExiste) {
+    return res.status(409).json({ error: 'Deck já salvo por este usuário!' });
   }
+  // Converte cartas para Map se vier como objeto
+  let cartasMap = cartas;
+  if (cartas && !(cartas instanceof Map)) {
+    cartasMap = new Map(Object.entries(cartas));
+  }
+  const novoDeck = new Deck({
+    nome,
+    cartas: cartasMap,
+    userEmail: req.user.email,
+    criadoEm: new Date()
+  });
+  await novoDeck.save();
+  res.status(201).json(novoDeck);
 });
 
 router.put('/:id', authenticateJWT, async (req, res) => {
@@ -51,13 +61,19 @@ router.put('/:id', authenticateJWT, async (req, res) => {
 
 router.delete('/:id', authenticateJWT, async (req, res) => {
   try {
+    console.log('Tentando remover deck com id:', req.params.id, 'e userEmail:', req.user.email);
     const removido = await Deck.findOneAndDelete({
       _id: req.params.id,
       userEmail: req.user.email
     });
-    if (!removido) return res.status(404).json({ error: 'Deck não encontrado ou sem permissão' });
+    if (!removido) {
+      console.log('Deck não encontrado para remoção:', req.params.id);
+      return res.status(404).json({ error: 'Deck não encontrado ou sem permissão' });
+    }
+    console.log('Deck removido com sucesso:', req.params.id);
     res.json({ message: 'Deck removido com sucesso' });
   } catch (err) {
+    console.error('Erro ao remover deck:', err);
     res.status(500).json({ error: 'Erro ao remover deck' });
   }
 });

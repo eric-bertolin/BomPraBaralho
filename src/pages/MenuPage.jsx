@@ -20,37 +20,36 @@ const MenuPage = ({ setDeckSelecionado, setCurrentPage }) => {
         const seteDiasAtras = new Date();
         seteDiasAtras.setDate(agora.getDate() - 7);
 
-        
+        // Decks da semana
         const semana = decks.filter(deck =>
           new Date(deck.publicadoEm) >= seteDiasAtras
         );
-
-        
-        const avaliados = decks
-          .filter(deck => (deck.avaliacao || 0) > 0)
-          .sort((a, b) => (b.avaliacao || 0) - (a.avaliacao || 0));
-
         setDecksSemana(semana);
-        setFavoritos(avaliados);
       })
       .catch((err) => console.error('Erro ao carregar decks da comunidade:', err));
+
+    // Buscar decks favoritos da nova rota
+    fetch('http://localhost:3001/api/decksFavoritos')
+      .then((res) => res.json())
+      .then((decks) => {
+        // Ordena por saldo e pega os 5 melhores
+        const top5 = [...decks].sort((a, b) => (b.saldo || 0) - (a.saldo || 0)).slice(0, 5);
+        setFavoritos(top5);
+      })
+      .catch((err) => console.error('Erro ao carregar decks favoritos:', err));
   }, []);
 
   return (
     <>
-      <h1 className="mt-4 text-center">NOVIDADES EM MTG</h1>
       <div className="slider-destaque">
         {novidades.map((item, i) => (
           <img
-              key={i}
-              src={item.imagem}
-              alt={item.nome}
-              className="cardimg"
-              style={{ cursor: 'pointer' }}
-              onClick={() => {
-                window.open(item.link, '_blank');
-                 
-    }}
+            key={i}
+            src={item.imagem}
+            alt={item.nome}
+            className="cardimg"
+            style={{ cursor: 'pointer' }}
+            onClick={() => window.open(item.link, '_blank')}
           />
         ))}
       </div>
@@ -72,16 +71,22 @@ const MenuPage = ({ setDeckSelecionado, setCurrentPage }) => {
             >
               <img
                 className="cardimg rounded img-fluid mb-2"
-                src={deck.imagem}
+                src={
+                  deck.cor
+                    ? `/IMGS/CAPADEBARALHO/${deck.cor.toUpperCase()}.PNG`
+                    : deck.imagem || '/IMGS/CAPADEBARALHO/BRANCO.PNG'
+                }
                 alt={deck.nome}
+                onError={e => {
+                  e.target.onerror = null;
+                  e.target.src = '/IMGS/CAPADEBARALHO/BRANCO.PNG';
+                }}
               />
               <h6>{deck.nome}</h6>
             </div>
-            
           ))
         )}
       </div>
-      
 
       <h1 className="mt-5">DECKS FAVORITOS DE TODOS OS TEMPOS</h1>
       <div className="slider-destaque mt-3">
@@ -91,12 +96,19 @@ const MenuPage = ({ setDeckSelecionado, setCurrentPage }) => {
           favoritos.map((deck, i) => (
             <img
               key={i}
-              src={deck.imagem}
+              src={deck.cor
+                ? `/IMGS/CAPADEBARALHO/${deck.cor.toUpperCase()}.PNG`
+                : deck.imagem || '/IMGS/CAPADEBARALHO/BRANCO.PNG'}
               alt={deck.nome}
-              className="text-center"
+              className="cardimg rounded img-fluid mb-2"
+              style={{ cursor: 'pointer' }}
               onClick={() => {
                 setDeckSelecionado(deck);
                 setCurrentPage('visualizar-deck');
+              }}
+              onError={e => {
+                e.target.onerror = null;
+                e.target.src = '/IMGS/CAPADEBARALHO/BRANCO.PNG';
               }}
             />
           ))
@@ -104,6 +116,6 @@ const MenuPage = ({ setDeckSelecionado, setCurrentPage }) => {
       </div>
     </>
   );
-};
+}
 
 export default MenuPage;

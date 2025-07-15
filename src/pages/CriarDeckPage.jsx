@@ -68,12 +68,14 @@ function CriarDeckPage() {
   const totalCartas = Object.values(deck).reduce((acc, c) => acc + c.quantidade, 0);
 
   const salvarDeck = () => {
-    if (!nomeDeck || totalCartas < 60) return;
+    if (!nomeDeck) return; // Comentado requisito de mínimo de cartas para teste
+    const cartasObj = Object.entries(deck).reduce((obj, [key, value]) => {
+      obj[key] = value;
+      return obj;
+    }, {});
     const novoDeck = {
-      id: Date.now(),
       nome: nomeDeck,
-      cartas: deck,
-      criadoEm: new Date().toISOString(),
+      cartas: cartasObj
     };
 
     fetch('http://localhost:3001/api/decks', {
@@ -150,9 +152,11 @@ function CriarDeckPage() {
 
         <div className="col-md-6">
           <h5>Deck Montado ({totalCartas} cartas)</h5>
+          {/* Comentado requisito de mínimo de cartas para teste
           {totalCartas < 60 && (
             <p className="text-danger">Deck incompleto: mínimo de 60 cartas.</p>
           )}
+          */}
           <ul className="list-group">
             {Object.values(deck).map((carta, index) => (
               <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
@@ -177,7 +181,7 @@ function CriarDeckPage() {
             />
             <button
               className="btn btn-success"
-              disabled={totalCartas < 60 || !nomeDeck}
+              disabled={!nomeDeck}
               onClick={salvarDeck}
             >
               Salvar Deck

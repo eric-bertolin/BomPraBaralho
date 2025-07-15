@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Colecao = require('../models/colecao');
+const Colecao = require('../models/Colecao');
 const authenticateJWT = require('../middlewares/authMiddleware');
 
 router.get('/', authenticateJWT, async (req, res) => {
