@@ -1,0 +1,162 @@
+[{
+  "_id": {
+    "$oid": "687187c2c6680a21c7aed5d1"
+  },
+  "nome": "Montanha",
+  "imagem": "/IMGS/CARTAS/TERRENOS/VERMELHO/MONTANHATERRENOVERMELHO.jpg",
+  "cor": "Vermelho",
+  "tipo": "Terreno"
+},
+{
+  "_id": {
+    "$oid": "68718856c6680a21c7aed5d3"
+  },
+  "nome": "Destroy Evil",
+  "imagem": "/IMGS/CARTAS/BRANCAS/CARTADESTROYEVILBRANCA.jpg",
+  "cor": "Branco",
+  "tipo": "Feitiço"
+},
+{
+  "_id": {
+    "$oid": "68718856c6680a21c7aed5d4"
+  },
+  "nome": "Sheltered by Ghosts",
+  "imagem": "/IMGS/CARTAS/BRANCAS/SHELTEREDBYGHOSTSBRANCA.jpg",
+  "cor": "Branco",
+  "tipo": "Feitiço"
+},
+{
+  "_id": {
+    "$oid": "68718856c6680a21c7aed5d5"
+  },
+  "nome": "Brotherhood's End",
+  "imagem": "/IMGS/CARTAS/VERMELHAS/BROTHEHOODSENDVERMELHA.jpg",
+  "cor": "Vermelho",
+  "tipo": "Feitiço"
+},
+{
+  "_id": {
+    "$oid": "68718856c6680a21c7aed5d6"
+  },
+  "nome": "Nurturing Pixie",
+  "imagem": "/IMGS/CARTAS/BRANCAS/SILFIDEACALENTADORA.jpg",
+  "cor": "Branco",
+  "tipo": "Criatura"
+},
+{
+  "_id": {
+    "$oid": "68718856c6680a21c7aed5d7"
+  },
+  "nome": "Fear Of Isolation",
+  "imagem": "/IMGS/CARTAS/AZUIS/FEAROFISOLATION.jpg",
+  "cor": "Azul",
+  "tipo": "Criatura"
+},
+{
+  "_id": {
+    "$oid": "68718856c6680a21c7aed5d8"
+  },
+  "nome": "Preacher Of The Schism ",
+  "imagem": "/IMGS/CARTAS/PRETAS/PREACHEROFTHESCHISM.jpg",
+  "cor": "Preto",
+  "tipo": "criatura"
+},
+{
+  "_id": {
+    "$oid": "68718856c6680a21c7aed5d9"
+  },
+  "nome": "Overlord of the Balemurk",
+  "imagem": "/IMGS/CARTAS/PRETAS/OVERLORDOFTHEBALEMURK.jpg",
+  "cor": "Preto",
+  "tipo": "criatura"
+},
+{
+  "_id": {
+    "$oid": "68718856c6680a21c7aed5da"
+  },
+  "nome": "Kaito",
+  "imagem": "/IMGS/CARTAS/AZUIS/KAITO.jpg",
+  "cor": "Azul Preto",
+  "tipo": "planeswalker"
+},
+{
+  "_id": {
+    "$oid": "68718856c6680a21c7aed5db"
+  },
+  "nome": "Go For The Throat",
+  "imagem": "/IMGS/CARTAS/PRETAS/GOFORTHETHROAT.jpg",
+  "cor": "Preto",
+  "tipo": "instantâneo"
+},
+{
+  "_id": {
+    "$oid": "68718856c6680a21c7aed5dc"
+  },
+  "nome": "Destroy Evil",
+  "imagem": "/IMGS/CARTAS/BRANCAS/DESTROYEVIL.jpg",
+  "cor": "Branco",
+  "tipo": "instantâneo"
+},
+{
+  "_id": {
+    "$oid": "68718856c6680a21c7aed5dd"
+  },
+  "nome": "Stock Up",
+  "imagem": "/IMGS/CARTAS/AZUIS/STOCKUP.jpg",
+  "cor": "Azul",
+  "tipo": "feitiço"
+},
+{
+  "_id": {
+    "$oid": "68718856c6680a21c7aed5de"
+  },
+  "nome": "This Town Aint Big Enough",
+  "imagem": "/IMGS/CARTAS/AZUIS/THISTOWNAINTBIGENOUGH.jpg",
+  "cor": "Azul",
+  "tipo": "instantânea"
+},
+{
+  "_id": {
+    "$oid": "68718856c6680a21c7aed5df"
+  },
+  "nome": "hopeless nightmare",
+  "imagem": "/IMGS/CARTAS/PRETAS/HOPELESSNIGHTMARE.png",
+  "cor": "Preto",
+  "tipo": "Encantamento"
+},
+{
+  "_id": {
+    "$oid": "68718856c6680a21c7aed5e0"
+  },
+  "nome": "stormchasers talent",
+  "imagem": "/IMGS/CARTAS/AZUIS/STORMCHASERSTALENT.jpg",
+  "cor": "Azul",
+  "tipo": "encantamento"
+},
+{
+  "_id": {
+    "$oid": "68718856c6680a21c7aed5e1"
+  },
+  "nome": "MOmentum Breaker",
+  "imagem": "/IMGS/CARTAS/PRETAS/MOMENTUMBREAKER.jpg",
+  "cor": "Preto",
+  "tipo": "encantamento"
+},
+{
+  "_id": {
+    "$oid": "68718856c6680a21c7aed5e2"
+  },
+  "nome": "nowhere to run",
+  "imagem": "/IMGS/CARTAS/PRETAS/NOWHERETORUN.jpg",
+  "cor": "Preto",
+  "tipo": "encantamento"
+},
+{
+  "_id": {
+    "$oid": "68718856c6680a21c7aed5e3"
+  },
+  "nome": "restless anchorage",
+  "imagem": "/IMGS/CARTAS/TERRENOS/BRANCOAZUL/RESTLESS ANCHORAGE.jpg",
+  "cor": "Branco Azul",
+  "tipo": "Terreno"
+}]

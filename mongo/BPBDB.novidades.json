@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "687298599fe74fe5afb3d8fe"
+  },
+  "nome": "Aetherdrift",
+  "imagem": "/IMGS/COLECOESNOVAS/COLECOESNOVAS1.webp",
+  "id": "3c2d",
+  "link": "https://magic.wizards.com/pt-BR/products/aetherdrift"
+},
+{
+  "_id": {
+    "$oid": "687298679fe74fe5afb3d900"
+  },
+  "nome": "Duskmourn",
+  "imagem": "/IMGS/COLECOESNOVAS/COLECOESNOVAS2.webp",
+  "id": "f6d1",
+  "link": "https://magic.wizards.com/pt-BR/products/duskmourn-house-of-horror"
+},
+{
+  "_id": {
+    "$oid": "687298779fe74fe5afb3d902"
+  },
+  "nome": "Bloomburrow",
+  "imagem": "/IMGS/COLECOESNOVAS/COLECOESNOVAS3.webp",
+  "id": "62f8",
+  "link": "https://magic.wizards.com/pt-BR/products/bloomburrow"
+},
+{
+  "_id": {
+    "$oid": "6872987f9fe74fe5afb3d904"
+  },
+  "nome": "Assassin's Creed",
+  "imagem": "/IMGS/COLECOESNOVAS/COLECOESNOVAS4.webp",
+  "id": "9cf9",
+  "link": "https://magic.wizards.com/pt-BR/products/assassins-creed"
+}]
